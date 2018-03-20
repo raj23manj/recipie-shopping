@@ -18,4 +18,15 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
     this.ingredientChanged.emit(this.ingredients.slice());
   }
+
+  addIngredients(ingredients: Ingredient[]) {
+    // loop and add, a better way to directly add
+    // for(let ingredient of ingredients){
+    //   this.ingredients.push(ingredient)
+    // }
+
+    // spread operator converts an array of element to a list og elements ([1,2,3]) => (1,2,3)
+    this.ingredients.push(...ingredients);
+    this.ingredientChanged.emit(this.ingredients.slice());
+  }
 }
