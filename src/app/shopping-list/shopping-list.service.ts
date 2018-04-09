@@ -10,6 +10,7 @@ export class ShoppingListService {
     new Ingredient('Apples', 5),
     new Ingredient('Tomatos', 10)
   ];
+  startedEditing = new Subject<number>();
 
   getIngredients(){
     // return this.ingredients; => this will work
