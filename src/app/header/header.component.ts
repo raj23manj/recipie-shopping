@@ -23,4 +23,10 @@ export class HeaderComponent {
           console.log(response);
         });
   }
+
+  onFetch(){
+    this.dataStorageService.getRecipes();
+  }
+
+
 }
