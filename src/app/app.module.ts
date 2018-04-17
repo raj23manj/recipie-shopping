@@ -58,3 +58,6 @@ import { AuthGuard } from './auth/auth-guard.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+// setting master this commit without using modules
