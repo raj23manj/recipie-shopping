@@ -14,6 +14,13 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
     CommonModule,
     FormsModule
   ]
+  // ther was error coz signup component used forms module and we had removed it from
+  // app.module. we can export it like this but not advisble, coz for
+  // developers while debugging is tough
+  // ,
+  // exports: [
+  //   FormsModule
+  // ]
 })
 
 export class ShoppingListModule{
