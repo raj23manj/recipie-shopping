@@ -36,3 +36,9 @@ In this example, the AuthGuard  should implement the CanLoad interface.
 
 https://angular.io/api/router/CanLoad
 */
+
+
+/* 21, 277
+  Don't provide services in shared modules!
+  especially not, if you plan to use them in lazy loaded modules
+*/
