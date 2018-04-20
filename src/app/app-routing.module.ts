@@ -21,3 +21,18 @@ const appRoutes: Routes = [
 export class AppRoutingModule {
 
 }
+
+
+/*
+What if you want to use route protection (canActivate  to be precise) on lazily loaded routes?
+
+You can add canActivate to the lazy loaded routes but that of course means, that you might load code which in the end can't get accessed anyways. It would be better to check that BEFORE loading the code.
+
+You can enforce this behavior by adding the canLoad  guard to the route which points to the lazily loaded module:
+
+{ path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canLoad: [AuthGuard] }
+
+In this example, the AuthGuard  should implement the CanLoad interface.
+
+https://angular.io/api/router/CanLoad
+*/
