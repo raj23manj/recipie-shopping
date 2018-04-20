@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+//import { HeaderComponent } from './header/header.component';
 //import { DropdownDirective } from './shared/dropdown.directive';
 
 // Services
@@ -22,7 +22,8 @@ import { AuthGuard } from './auth/auth-guard.service';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
-import { HomeComponent } from './home/home.component';
+//import { HomeComponent } from './home/home.component';
+import { CoreModule } from './core/core.module';
 
 // here in app module we need to use BrowserModule it intun contains common module and others
 
@@ -30,9 +31,9 @@ import { HomeComponent } from './home/home.component';
 // recipes mould will be lazy loaded
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
+    AppComponent
+    // HeaderComponent,
+    // HomeComponent,
     //DropdownDirective,
   ],
   imports: [
@@ -41,7 +42,8 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     SharedModule,
     ShoppingListModule,
-    AuthModule
+    AuthModule,
+    CoreModule
   ],
   providers: [
               ShoppingListService,
