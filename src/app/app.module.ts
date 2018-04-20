@@ -19,24 +19,26 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 
 //custom modules
-import { RecipesModule } from './recipies/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
+import { HomeComponent } from './home/home.component';
 
 // here in app module we need to use BrowserModule it intun contains common module and others
 
+// here what ever is added is eager loaded meaning when app is intialise all this is all called.
+// recipes mould will be lazy loaded
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     //DropdownDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    RecipesModule,
     SharedModule,
     ShoppingListModule,
     AuthModule

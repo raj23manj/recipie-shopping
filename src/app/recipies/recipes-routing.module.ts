@@ -9,7 +9,8 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 
 const recipesRoutes: Routes = [
-  { path: 'recipes', component: RecipiesComponent, children: [
+  // for lazy loading we sould declare it the app routes, so reomed recipes
+  { path: '', component: RecipiesComponent, children: [
     { path: '', component: RecipeStartComponent},
     { path: 'new', component: RecipeEditComponent, canActivate: [AuthGuard]},
     { path: ':id', component: RecipeDetailComponent },
