@@ -12,11 +12,7 @@ import { AppComponent } from './app.component';
 //import { DropdownDirective } from './shared/dropdown.directive';
 
 // Services
-import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { RecipeService } from  './recipies/recipe.service';
-import { DataStorageService } from './shared/data-storage.service';
-import { AuthService } from './auth/auth.service';
-import { AuthGuard } from './auth/auth-guard.service';
+// moved to core modules
 
 //custom modules
 import { SharedModule } from './shared/shared.module';
@@ -45,13 +41,7 @@ import { CoreModule } from './core/core.module';
     AuthModule,
     CoreModule
   ],
-  providers: [
-              ShoppingListService,
-              RecipeService,
-              DataStorageService,
-              AuthService,
-              AuthGuard
-            ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

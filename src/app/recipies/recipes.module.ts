@@ -16,6 +16,7 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { SharedModule } from './../shared/shared.module';
 
+
 /*
   we must not duplicate modules here and app in the declarations array,
   error :  Type DropdownDirective is part of the declarations of 2 modules

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// authguard is a service, actulally needed to be in recipes module but since used in routing needs to be here
 import { AuthGuard } from '../auth/auth-guard.service';
 import { RecipiesComponent } from './recipies.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
@@ -22,7 +23,8 @@ const recipesRoutes: Routes = [
   imports: [
     RouterModule.forChild(recipesRoutes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 
 export class RecipesRoutingModule{}
