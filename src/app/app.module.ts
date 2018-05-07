@@ -51,5 +51,6 @@ export class AppModule { }
 
 // setting master this commit without using modules
 /*
+test@test.com
  user test123
 */

@@ -22,7 +22,15 @@ export class DataStorageService {
   getRecipes(){
     const token = this.authService.getToken();
 
-    this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token)
+    this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token, {observe: 'response', responseType: 'json'})
+    /*
+        this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
+      {observe: 'response', responseType: 'text'})
+
+      observe response will be complete body will be only body, bolb,etc see documentation for more
+      section 23 lecture 296
+      here we need not do response.json(); it is taken care by defult, in case we want other format like text, string
+    */
                .map((recipes) => {
                  //Rresponse: Response
                  // this can be use but new feature is used
