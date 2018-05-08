@@ -14,6 +14,9 @@ import { AuthService } from './../auth/auth.service';
 // since auth guard for now is used only in recipes componet let' smove it there.
 // if not we can have it here itself
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../shared/auth.interceptor';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -31,7 +34,8 @@ import { AuthService } from './../auth/auth.service';
     ShoppingListService,
     RecipeService,
     DataStorageService,
-    AuthService
+    AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true} // multi says that we can have more interceptors
   ]
 })
 

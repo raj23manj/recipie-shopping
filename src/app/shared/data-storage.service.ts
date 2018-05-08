@@ -53,6 +53,7 @@ export class DataStorageService {
       here we need not do response.json(); it is taken care by defult, in case we want other format like text, string
     */
                .map((recipes) => {
+                 console.log(recipes);
                  //Rresponse: Response
                  // this can be use but new feature is used
                  //recipes: Recipe[]
