@@ -25,8 +25,8 @@ export class DataStorageService {
                                 'https://ng-recipe-book-12729.firebaseio.com/recipes.json',
                                 this.recipeService.getRecipies(),
                                 {
-                                  reportProgress: true,
-                                  params: new HttpParams().set('auth', token)
+                                  reportProgress: true
+                                  // params: new HttpParams().set('auth', token)
                                 }
                               );
     return this.httpClient.request(req);
