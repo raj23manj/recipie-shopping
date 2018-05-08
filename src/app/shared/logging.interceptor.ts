@@ -12,3 +12,6 @@ export class LoggingInterceptor implements HttpInterceptor {
     );
   }
 }
+
+// link to httpClient
+//  https://angular.io/guide/http
