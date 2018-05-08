@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //import { Http, Response } from '@angular/http';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http'
 import { RecipeService } from '../recipies/recipe.service';
 import { Recipe } from '../recipies/recipe.model';
 import 'rxjs/Rx';
@@ -17,8 +17,19 @@ export class DataStorageService {
     const token = this.authService.getToken();
     // return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
     //                       this.recipeService.getRecipies(), {observe: 'events'});
-    return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json',
-                          this.recipeService.getRecipies(), { observe: 'body', params: new HttpParams().set('auth', token) });
+    // return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json',
+    //                       this.recipeService.getRecipies(), { observe: 'body', params: new HttpParams().set('auth', token) });
+
+    // helpful for seeing progress, uploading and downloading a file, creating request from scratch
+    const req = new HttpRequest('PUT',
+                                'https://ng-recipe-book-12729.firebaseio.com/recipes.json',
+                                this.recipeService.getRecipies(),
+                                {
+                                  reportProgress: true,
+                                  params: new HttpParams().set('auth', token)
+                                }
+                              );
+    return this.httpClient.request(req);
   }
 
   getRecipes(){
