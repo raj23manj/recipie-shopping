@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //import { Http, Response } from '@angular/http';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { RecipeService } from '../recipies/recipe.service';
 import { Recipe } from '../recipies/recipe.model';
 import 'rxjs/Rx';
@@ -17,19 +17,21 @@ export class DataStorageService {
     const token = this.authService.getToken();
     // return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
     //                       this.recipeService.getRecipies(), {observe: 'events'});
-    return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
-                          this.recipeService.getRecipies(), {observe: 'body'});
+    return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json',
+                          this.recipeService.getRecipies(), { observe: 'body', params: new HttpParams().set('auth', token) });
   }
 
   getRecipes(){
     const token = this.authService.getToken();
+    //const headers =   new HttpHeaders().set('Authoriztion', 'Bearer amnkjkhois');   //.apprend()
 
-    this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
+    this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json',
                                   {
                                     observe: 'body',
                                     responseType: 'json',
-                                    headers: new HttpHeaders().set('Authoriztion', 'Bearer amnkjkhois')
-                                                              //.apprend()
+                                    params: new HttpParams().set('auth', token)
+                                    //headers: headers
+
                                   })
     /*
         this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
