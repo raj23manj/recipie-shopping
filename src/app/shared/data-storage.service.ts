@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //import { Http, Response } from '@angular/http';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { RecipeService } from '../recipies/recipe.service';
 import { Recipe } from '../recipies/recipe.model';
 import 'rxjs/Rx';
@@ -15,14 +15,22 @@ export class DataStorageService {
 
   storeRecipes(){
     const token = this.authService.getToken();
+    // return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
+    //                       this.recipeService.getRecipies(), {observe: 'events'});
     return this.httpClient.put('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
-                          this.recipeService.getRecipies());
+                          this.recipeService.getRecipies(), {observe: 'body'});
   }
 
   getRecipes(){
     const token = this.authService.getToken();
 
-    this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token, {observe: 'response', responseType: 'json'})
+    this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
+                                  {
+                                    observe: 'body',
+                                    responseType: 'json',
+                                    headers: new HttpHeaders().set('Authoriztion', 'Bearer amnkjkhois')
+                                                              //.apprend()
+                                  })
     /*
         this.httpClient.get<Recipe[]>('https://ng-recipe-book-12729.firebaseio.com/recipes.json?auth=' + token,
       {observe: 'response', responseType: 'text'})
