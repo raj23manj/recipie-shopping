@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   // lazy loading recipes module, webpack handles it oly when we enter this route
   // once added lazy loading restart the server
   {path: 'recipes', loadChildren: './recipies/recipes.module#RecipesModule'},
-  { path: 'shopping-list', component: ShoppingListComponent }
+  { path: 'shopping-list', component: ShoppingListComponent } // eagerly loaded
 ];
 
 @NgModule({

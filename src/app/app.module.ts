@@ -22,6 +22,10 @@ import { AuthModule } from './auth/auth.module';
 //import { HomeComponent } from './home/home.component';
 import { CoreModule } from './core/core.module';
 
+// ngrx reducers
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
+
 // here in app module we need to use BrowserModule it intun contains common module and others
 
 // here what ever is added is eager loaded meaning when app is intialise all this is all called.
@@ -41,7 +45,8 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     ShoppingListModule,
     AuthModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot({ shoppingList: shoppingListReducer })  // which means for our main application for eagerly loaded ones like shopping list
   ],
   providers: [],
   bootstrap: [AppComponent]
