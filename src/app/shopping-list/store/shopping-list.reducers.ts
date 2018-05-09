@@ -1,4 +1,5 @@
-import { Action } from '@ngrx/store';
+// * will bundle all export objects from the file mrntioned
+import * as ShoppingListActions from './shopping-list.actions';
 
 import { Ingredient } from '../../shared/ingredient.model';
 
@@ -10,15 +11,16 @@ const intialState = {
 };
 
 // these two params are automatically passed by ngrx state & action
-export function shoppingListReducer(state = intialState, action: Action) {
+export function shoppingListReducer(state = intialState, action: ShoppingListActions.ShoppingListActions) {
   // while returning it returns a new copied/overrided state of old one, as states are immutable
 
   switch(action.type) {
-    case ADD_INGREDIENT:
+    case ShoppingListActions.ADD_INGREDIENT:
           return {
             ...state,
-            ingredients: [...state.ingredients, action]
+            ingredients: [...state.ingredients, action.payload]
           }
+    default:
+        return state;
   }
-  return state;
 }
