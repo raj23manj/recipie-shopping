@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Ingredient } from '../shared/ingredient.model';
+import { Ingredient } from '../../shared/ingredient.model';
 
 const intialState = {
   ingredients: [
@@ -12,5 +12,13 @@ const intialState = {
 // these two params are automatically passed by ngrx state & action
 export function shoppingListReducer(state = intialState, action: Action) {
   // while returning it returns a new copied/overrided state of old one, as states are immutable
+
+  switch(action.type) {
+    case ADD_INGREDIENT:
+          return {
+            ...state,
+            ingredients: [...state.ingredients, action]
+          }
+  }
   return state;
 }
