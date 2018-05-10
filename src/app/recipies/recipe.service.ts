@@ -1,10 +1,12 @@
 import { Recipe } from './recipe.model';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
+//import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Subject } from 'rxjs/Subject';
+//import { Store } from '@ngrx/store';
+import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
 
-@Injectable()
+//@Injectable()
 
 export class RecipeService {
 
@@ -29,17 +31,19 @@ export class RecipeService {
                 ]
               )
   ];
-
-  constructor(private slService: ShoppingListService){}
+ //private slService: ShoppingListService,
+ // private store: Store<{shoppingList: {ingredients: Ingredient[]}}>
+  constructor(){}
 
   getRecipies(){
     // returns a copy of original array
     return this.recipes.slice();
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]){
-    this.slService.addIngredients(ingredients);
-  }
+  // addIngredientsToShoppingList(ingredients: Ingredient[]){
+  //   //this.slService.addIngredients(ingredients);
+  //   this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
+  // }
 
   getRecipe(index: number) {
     // slice gives us a copy of array
