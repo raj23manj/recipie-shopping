@@ -3,11 +3,23 @@ import * as ShoppingListActions from './shopping-list.actions';
 
 import { Ingredient } from '../../shared/ingredient.model';
 
-const intialState = {
+export interface AppState {
+  shoppingList: State
+}
+
+export interface State {
+  ingredients: Ingredient[],
+  editedIngredient: Ingredient,
+  editedIngredientIndex: number
+}
+
+const intialState: State = {
   ingredients: [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10),
-  ]
+  ],
+  editedIngredient: null,
+  editedIngredientIndex: -1 // just a convention no real significance
 };
 
 // these two params are automatically passed by ngrx state & action
