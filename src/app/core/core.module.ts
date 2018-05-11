@@ -6,7 +6,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 // Services
-import { ShoppingListService } from './../shopping-list/shopping-list.service';
+//import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { RecipeService } from  './../recipies/recipe.service';
 import { DataStorageService } from './../shared/data-storage.service';
 import { AuthService } from './../auth/auth.service';
@@ -32,7 +32,7 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
     HeaderComponent
   ],
   providers:[
-    ShoppingListService,
+    //ShoppingListService,
     RecipeService,
     DataStorageService,
     AuthService,
