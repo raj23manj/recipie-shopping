@@ -49,7 +49,9 @@ export function shoppingListReducer(state = intialState, action: ShoppingListAct
           ingredients[state.editedIngredientIndex] = updatedIngredient;
           return {
             ...state,
-            ingredients: ingredients
+            ingredients: ingredients,
+            editedIngredient: null,
+            editedIngredientIndex: -1
           };
     case ShoppingListActions.DELETE_INGREDIENT:
           const oldIngredients = [...state.ingredients];
@@ -57,7 +59,9 @@ export function shoppingListReducer(state = intialState, action: ShoppingListAct
           oldIngredients.splice(state.editedIngredientIndex, 1);
           return {
             ...state,
-            ingredients: oldIngredients
+            ingredients: oldIngredients,
+            editedIngredient: null,
+            editedIngredientIndex: -1
           };
     case ShoppingListActions.START_EDIT:
           //state.ingredients[action.payload]; to make it immutable way below method
@@ -67,6 +71,12 @@ export function shoppingListReducer(state = intialState, action: ShoppingListAct
             editedIngredient: editedIngredient,
             editedIngredientIndex: action.payload
           }
+    case ShoppingListActions.STOP_EDIT:
+    return {
+      ...state,
+      editedIngredient: null,
+      editedIngredientIndex: -1
+    }
     default:
         return state;
   }
