@@ -25,6 +25,7 @@ import { CoreModule } from './core/core.module';
 // ngrx reducers
 import { StoreModule } from '@ngrx/store';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
+import { reducers } from './store/app.reducers';
 
 // here in app module we need to use BrowserModule it intun contains common module and others
 
@@ -46,7 +47,8 @@ import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    StoreModule.forRoot({ shoppingList: shoppingListReducer })  // which means for our main application for eagerly loaded ones like shopping list
+    // StoreModule.forRoot({ shoppingList: shoppingListReducer })
+    StoreModule.forRoot(reducers)  // which means for our main application for eagerly loaded ones like shopping list
   ],
   providers: [],
   bootstrap: [AppComponent]
