@@ -9,5 +9,7 @@ const intialState: State = {
 };
 
 export function authReducer(state = intialState, action) {
+
+
   return state;
 }
