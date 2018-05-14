@@ -1,3 +1,5 @@
+import * as AuthActions from './auth.auth.actions';
+
 export interface State {
   token: string,
   authenticated: boolean
@@ -8,8 +10,22 @@ const intialState: State = {
   authenticated: false
 };
 
-export function authReducer(state = intialState, action) {
+export function authReducer(state = intialState, action: AuthActions.AuthActions) {
 
-
-  return state;
+  switch(action.type) {
+    case (AuthActions.SIGNUP):
+    case (AuthActions.SIGNIN):
+      return {
+        ...state,
+        authenticated: true
+      };
+    case (AuthActions.LOGOUT):
+      return {
+        ...state,
+        token: null,
+        authenticated: false
+      };
+    default:
+      return state;
+  }
 }
