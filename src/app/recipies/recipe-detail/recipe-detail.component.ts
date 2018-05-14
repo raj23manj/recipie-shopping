@@ -6,9 +6,8 @@ import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
 //import { Ingredient } from '../../shared/ingredient.model';
 
-import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
-
-
+//import * as fromShoppingList from '../../shopping-list/store/shopping-list.reducers';
+import * as fromApp from '../../store/app.reducers';
 
 
 @Component({
@@ -24,7 +23,7 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute,
-              private store: Store<fromShoppingList.AppState>
+              private store: Store<fromApp.AppState>
               ) {
 
    }

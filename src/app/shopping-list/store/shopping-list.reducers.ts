@@ -3,9 +3,9 @@ import * as ShoppingListActions from './shopping-list.actions';
 
 import { Ingredient } from '../../shared/ingredient.model';
 
-export interface AppState {
-  shoppingList: State
-}
+// export interface AppState {
+//   shoppingList: State
+// }
 
 export interface State {
   ingredients: Ingredient[],
@@ -78,6 +78,6 @@ export function shoppingListReducer(state = intialState, action: ShoppingListAct
       editedIngredientIndex: -1
     }
     default:
-        return state;
+      return state;
   }
 }
