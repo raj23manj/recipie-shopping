@@ -9,6 +9,7 @@ import 'rxjs/add/operator/mergeMap';
 import * as firebase from 'firebase';
 //to convert a promise to observable
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
@@ -62,6 +63,7 @@ export class AuthEffects {
                 return fromPromise(firebase.auth().currentUser.getIdToken());
               })
              .mergeMap((token: string) => {
+               this.router.navigate(['/'])
                 return [{
                            type: AuthActions.SIGNIN
                          },
@@ -76,7 +78,7 @@ export class AuthEffects {
   // retrive the actions from application states/store
 
   // $ => represents it is a observable
-  constructor(private actions$: Actions) {
+  constructor(private actions$: Actions, private router: Router) {
   // actions$ here is the the list of all actions that we have in our app (shopping, auth ...)
   }
 }
