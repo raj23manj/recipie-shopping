@@ -5,6 +5,7 @@ import * as AuthActions from './auth.actions';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 
 import * as firebase from 'firebase';
 //to convert a promise to observable
@@ -73,6 +74,14 @@ export class AuthEffects {
                          }
                        ];
              });
+
+    @Effect({dispatch: false})
+    authLogout = this.actions$
+                  .ofType(AuthActions.LOGOUT)
+                  .do(() => { // after this it has run it through the reducer, using subscribe here finished it here
+                    this.router.navigate(['/'])
+                  });
+
 
   // to inject actions we use Injectable, and the ngrx/effects is automatically able to
   // retrive the actions from application states/store
