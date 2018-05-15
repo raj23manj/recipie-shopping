@@ -27,6 +27,10 @@ import { StoreModule } from '@ngrx/store';
 import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
 import { reducers } from './store/app.reducers';
 
+// ngrx/effects
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
+
 // here in app module we need to use BrowserModule it intun contains common module and others
 
 // here what ever is added is eager loaded meaning when app is intialise all this is all called.
@@ -48,7 +52,8 @@ import { reducers } from './store/app.reducers';
     AuthModule,
     CoreModule,
     // StoreModule.forRoot({ shoppingList: shoppingListReducer })
-    StoreModule.forRoot(reducers)  // which means for our main application for eagerly loaded ones like shopping list
+    StoreModule.forRoot(reducers),  // which means for our main application for eagerly loaded ones like shopping list
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
