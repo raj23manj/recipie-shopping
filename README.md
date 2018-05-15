@@ -29,3 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 using aot
 ng build —prod —aot
+
+
+## Notes:
+  Ngrx not necessary to be used for UI states, Ignore them.
