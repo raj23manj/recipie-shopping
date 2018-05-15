@@ -4,13 +4,13 @@ import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/commo
 import { RecipeService } from '../recipies/recipe.service';
 import { Recipe } from '../recipies/recipe.model';
 import 'rxjs/Rx';
-import { AuthService } from './../auth/auth.service';
+//import { AuthService } from './../auth/auth.service';
 
+//,private authService: AuthService
 @Injectable()
 export class DataStorageService {
   constructor(private httpClient: HttpClient,
-              private recipeService: RecipeService,
-              private authService: AuthService
+              private recipeService: RecipeService
               ){}
 
   storeRecipes(){

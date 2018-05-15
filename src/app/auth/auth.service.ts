@@ -1,3 +1,5 @@
+// not used anymore, but keeping for my reference
+
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
