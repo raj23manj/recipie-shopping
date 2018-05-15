@@ -31,6 +31,8 @@ import { reducers } from './store/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './../environments/environment';
 
 // here in app module we need to use BrowserModule it intun contains common module and others
 
@@ -55,7 +57,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     // StoreModule.forRoot({ shoppingList: shoppingListReducer })
     StoreModule.forRoot(reducers),  // which means for our main application for eagerly loaded ones like shopping list
     EffectsModule.forRoot([AuthEffects]),
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]
