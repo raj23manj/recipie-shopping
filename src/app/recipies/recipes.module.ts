@@ -16,6 +16,11 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { SharedModule } from './../shared/shared.module';
 
+// for lazy loading redux
+import { StoreModule } from '@ngrx/store';
+import { recipeReducer } from './store/recipe.reducers';
+
+
 
 /*
   we must not duplicate modules here and app in the declarations array,
@@ -35,7 +40,9 @@ import { SharedModule } from './../shared/shared.module';
     CommonModule,
     ReactiveFormsModule,
     RecipesRoutingModule,
-    SharedModule
+    SharedModule,
+    // for redux lazy loading (featurename, reducers), this will load dynamically inject state and reducers into global state
+    StoreModule.forFeature('recipes', recipeReducer)
   ]
 })
 
