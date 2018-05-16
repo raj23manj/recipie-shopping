@@ -19,6 +19,8 @@ import { SharedModule } from './../shared/shared.module';
 // for lazy loading redux
 import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './store/recipe.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { RecipeEffects } from './store/recipe.effects';
 
 
 
@@ -42,7 +44,8 @@ import { recipeReducer } from './store/recipe.reducers';
     RecipesRoutingModule,
     SharedModule,
     // for redux lazy loading (featurename, reducers), this will load dynamically inject state and reducers into global state
-    StoreModule.forFeature('recipes', recipeReducer)
+    StoreModule.forFeature('recipes', recipeReducer),
+    EffectsModule.forFeature([RecipeEffects])
   ]
 })
 
