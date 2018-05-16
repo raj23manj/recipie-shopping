@@ -5,8 +5,10 @@ import { Recipe } from '../recipe.model';
 import { Ingredient } from '../../shared/ingredient.model';
 import * as RecipeActions from './recipe.actions';
 
+import * as fromApp from '../../store/app.reducers';
+
 // here we do like this coz, in the module registration (recipe-module) we register it in the store like recipes: {recipes: []}
-export interface FeatureState {
+export interface FeatureState extends fromApp.AppState {
   recipes: State
 }
 
