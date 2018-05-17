@@ -7,8 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 
 // Services
 //import { ShoppingListService } from './../shopping-list/shopping-list.service';
-import { RecipeService } from  './../recipies/recipe.service';
-import { DataStorageService } from './../shared/data-storage.service';
+//import { RecipeService } from  './../recipies/recipe.service';
+//import { DataStorageService } from './../shared/data-storage.service';
 //import { AuthService } from './../auth/auth.service';
 // import { AuthGuard } from './../auth/auth-guard.service';
 // since auth guard for now is used only in recipes componet let' smove it there.
@@ -33,8 +33,8 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
   ],
   providers:[
     //ShoppingListService,
-    RecipeService,
-    DataStorageService,
+    //RecipeService,
+    //DataStorageService,
     // AuthService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, // multi says that we can have more interceptors
     {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}

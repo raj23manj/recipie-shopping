@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../../shared/data-storage.service';
+//import { DataStorageService } from '../../shared/data-storage.service';
 //import { Response } from '@angular/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 //import { AuthService } from '../../auth/auth.service';
@@ -19,9 +19,8 @@ import * as RecipeActions from '../../recipies/store/recipe.actions';
 export class HeaderComponent implements OnInit {
 
   authState: Observable<fromAuth.State>;
-//,private authService: AuthService
-  constructor(private dataStorageService: DataStorageService,
-              private store: Store<fromApp.AppState>){ }
+//,private authService: AuthService, private dataStorageService: DataStorageService,
+  constructor(private store: Store<fromApp.AppState>){ }
 
   // @Output() featureSelected = new EventEmitter<string>();
 
