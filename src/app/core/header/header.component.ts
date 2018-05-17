@@ -34,15 +34,16 @@ export class HeaderComponent implements OnInit {
   }
 
   onSave(){
-    this.dataStorageService.storeRecipes()
-        // .subscribe((response: HttpEvent<Object>) => {
-        //   console.log(response);
-        //   console.log(response.type === HttpEventType.Response);
-        // });
-        .subscribe((response) => {
-          console.log(response);
-          // console.log(response.type === HttpEventType.Response);
-        });
+    // this.dataStorageService.storeRecipes()
+    //     // .subscribe((response: HttpEvent<Object>) => {
+    //     //   console.log(response);
+    //     //   console.log(response.type === HttpEventType.Response);
+    //     // });
+    //     .subscribe((response) => {
+    //       console.log(response);
+    //       // console.log(response.type === HttpEventType.Response);
+    //     });
+    this.store.dispatch(new RecipeActions.StoreRecipes());
   }
 
   onFetch(){

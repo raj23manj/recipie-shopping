@@ -3,9 +3,14 @@
 import { Effect, Actions } from '@ngrx/effects';
 import * as RecipeActions from '../store/recipe.actions';
 import 'rxjs/add/operator/switchMap';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Recipe } from '../recipe.model';
 import { Injectable } from '@angular/core';
+
+// to fetch data from the store
+import  'rxjs/add/operator/withLatestFrom';
+import { Store } from '@ngrx/store';
+import * as fromRecipe from '../store/recipe.reducers';
 
 @Injectable()
 export class RecipeEffects {
@@ -38,9 +43,24 @@ export class RecipeEffects {
                       type: RecipeActions.SET_RECIPES,
                       payload: recipes
                     };
-                })
+                });
 
+    @Effect({dispatch: false})
+    recipeStore = this.actions$
+                  .ofType(RecipeActions.STORE_RECIPES)
+                  .withLatestFrom(this.store.select('recipes')) // allows me to combine with ofType value 'RecipeActions.STORE_RECIPES' + another value observable spits out
+                  .switchMap(([action, state]) => {
+                    const req = new HttpRequest('PUT',
+                                                'https://ng-recipe-book-12729.firebaseio.com/recipes.json',
+                                                state.recipes,
+                                                {
+                                                  reportProgress: true
+                                                }
+                                              );
+                    return this.httpClient.request(req);
+                  });
 
-
-  constructor(private actions$: Actions, private httpClient: HttpClient) {}
+  constructor(private actions$: Actions,
+              private store: Store<fromRecipe.FeatureState>,
+              private httpClient: HttpClient) {}
 }
